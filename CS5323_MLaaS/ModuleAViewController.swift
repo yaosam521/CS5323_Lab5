@@ -59,8 +59,10 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
             } catch {
                 print("Error starting recording: \(error.localizedDescription)")
             }
+            recordButton.setTitle("stop", for: .normal)
         } else {
             soundRecorder.stop()
+            recordButton.setTitle("record", for: .normal)
         }
     }
     
