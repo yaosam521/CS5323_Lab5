@@ -8,14 +8,20 @@
 import UIKit
 
 class ModuleAViewController: UIViewController {
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func recordButtonAction(_ sender: Any) {
+    }
     
-
+    @IBAction func sendAudioSample(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

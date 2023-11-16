@@ -42,11 +42,17 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Record">
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="recordButtonAction:" destination="Bib-s2-CFn" eventType="touchUpInside" id="JrG-SD-LZl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgJ-19-Rl5">
                                         <rect key="frame" x="160.33333333333334" y="0.0" width="78.333333333333343" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Post"/>
+                                        <connections>
+                                            <action selector="sendAudioSample:" destination="Bib-s2-CFn" eventType="touchUpInside" id="pKd-tg-kMS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -64,6 +70,7 @@
                     <tabBarItem key="tabBarItem" title="Module A" image="figure.archery" catalog="system" selectedImage="figure.archery" id="8Qt-9q-sxH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggd-ag-eeH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Bib-s2-CFn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="713.04347826086962" y="-625.27173913043487"/>
         </scene>
