@@ -28,12 +28,15 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         let audioSession = AVAudioSession.sharedInstance()
         
         do {
+            // Set up the audio session for play and record
             try audioSession.setCategory(.playAndRecord, mode: .default, options: [])
             try audioSession.setActive(true)
             
+            // Set up file path for recording
             let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let soundFilePath = documentPath.appendingPathComponent(fileName)
             
+            // Define recording settings
             let recordSettings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatAppleLossless,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
@@ -42,6 +45,7 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
                 AVNumberOfChannelsKey: 2,
             ]
             
+            // Create and configure AVAudioRecorder
             soundRecorder = try AVAudioRecorder(url: soundFilePath, settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()
@@ -54,20 +58,25 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     @IBAction func recordSound(_ sender: Any) {
         if !soundRecorder.isRecording {
             do {
+                // Activate audio session and start recording
                 try AVAudioSession.sharedInstance().setActive(true)
                 soundRecorder.record()
             } catch {
                 print("Error starting recording: \(error.localizedDescription)")
             }
+            // Update UI for recording state
             recordButton.setTitle("stop", for: .normal)
         } else {
+            // Stop recording if already recording
             soundRecorder.stop()
+            // Update UI for non-recording state
             recordButton.setTitle("record", for: .normal)
         }
     }
     
     @IBAction func playSound(_ sender: Any) {
         do {
+            // Create and configure AVAudioPlayer for playback
             soundPlayer = try AVAudioPlayer(contentsOf: soundRecorder.url)
             soundPlayer.delegate = self
             soundPlayer.prepareToPlay()
@@ -78,6 +87,12 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     }
     
     @IBAction func postSound(_ sender: Any) {
+        
+        // Get the file path to upload
+        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let soundFilePath = documentPath.appendingPathComponent(fileName)
+        
+        
         
     }
     /*
