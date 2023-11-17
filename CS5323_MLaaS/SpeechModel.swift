@@ -34,12 +34,15 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         
         do {
+            // Set up the audio session for play and record
             try audioSession.setCategory(.playAndRecord, mode: .default, options: [])
             try audioSession.setActive(true)
             
+            // Set up file path for recording
             let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let soundFilePath = documentPath.appendingPathComponent(fileName)
             
+            // Define recording settings
             let recordSettings: [String: Any] = [
                 AVFormatIDKey: kAudioFormatAppleLossless,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
@@ -48,6 +51,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
                 AVNumberOfChannelsKey: 2,
             ]
             
+            // Create and configure AVAudioRecorder
             soundRecorder = try AVAudioRecorder(url: soundFilePath, settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()
@@ -61,6 +65,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         
         if !soundRecorder.isRecording {
             do {
+                // Activate audio session and start recording
                 try AVAudioSession.sharedInstance().setActive(true)
                 soundRecorder.record()
             } catch {
@@ -71,7 +76,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
             cflag = true
             
         } else {
-            
+            // Stop recording if already recording
             soundRecorder.stop()
             
             cflag = false
@@ -81,6 +86,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     func playSound() {
         do {
+            // Create and configure AVAudioPlayer for playback
             soundPlayer = try AVAudioPlayer(contentsOf: soundRecorder.url)
             soundPlayer.delegate = self
             soundPlayer.prepareToPlay()
@@ -91,6 +97,9 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     }
     
     func postSound() {
+        // Get the file path to upload
+        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let soundFilePath = documentPath.appendingPathComponent(fileName)
         
     }
         
