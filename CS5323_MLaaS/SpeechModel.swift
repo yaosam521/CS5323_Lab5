@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SwiftUI
 
 class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
@@ -18,6 +19,16 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     var vc = ModuleAViewController()
     var cflag: Bool
     
+    enum Gender: String, CaseIterable, Identifiable{
+        case male, female
+        var id: Self { self }
+    }
+    @State private var selectedGender: Gender = .female
+    //func Picker("Gender", selection: $selectedGender){
+      //  ForEach(Gender.allCases) { gender in
+        //    Text(gender.rawValue.capitalized)
+        //}
+    //}
     
     override init(){
         self.cflag = false
@@ -101,8 +112,45 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let soundFilePath = documentPath.appendingPathComponent(fileName)
         
-    }
+        let apiUrl = URL(string: "https://example.com/upload")
+        let session = URLSession.shared
+
+        // Prepare the URLRequest
+        var request = URLRequest(url: apiUrl!)
+        request.httpMethod = "POST"
+
+        // Create the upload task
+        let task = session.uploadTask(with: request, fromFile: soundFilePath) { (data, response, error) in
+            if let error = error {
+                print("Error uploading file: \(error)")
+            } else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("Status code: \(httpResponse.statusCode)")
+
+                    if let responseData = data {
+                        // Process the response data if needed
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: responseData, options: [])
+                            print("Response JSON: \(json)")
+                        } catch {
+                            print("Error parsing JSON response: \(error)")
+                        }
+                    }
+                }
+            }
+        }
         
-    
+        task.resume() //start task
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
 
