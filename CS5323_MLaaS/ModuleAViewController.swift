@@ -9,7 +9,7 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
-    var fileName = "audioFile.m4a"
+    var fileName = "audioFile.wav"
     var speechModel:SpeechModel? = nil
     
     override func viewDidLoad() {
