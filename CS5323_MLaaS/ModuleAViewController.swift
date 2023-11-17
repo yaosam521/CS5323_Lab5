@@ -92,8 +92,35 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let soundFilePath = documentPath.appendingPathComponent(fileName)
         
+        let apiUrl = URL(string: "https://example.com/upload")
+        let session = URLSession.shared
+
+        // Prepare the URLRequest
+        var request = URLRequest(url: apiUrl!)
+        request.httpMethod = "POST"
+
+        // Create the upload task
+        let task = session.uploadTask(with: request, fromFile: soundFilePath) { (data, response, error) in
+            if let error = error {
+                print("Error uploading file: \(error)")
+            } else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("Status code: \(httpResponse.statusCode)")
+
+                    if let responseData = data {
+                        // Process the response data if needed
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: responseData, options: [])
+                            print("Response JSON: \(json)")
+                        } catch {
+                            print("Error parsing JSON response: \(error)")
+                        }
+                    }
+                }
+            }
+        }
         
-        
+        task.resume() //start task
     }
     /*
     // MARK: - Navigation
