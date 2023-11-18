@@ -16,12 +16,27 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     var fileName = "audioFile.m4a"
+    var soundLabelData = "male"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupRecorder()
+        print(soundLabelData)
+    }
+    
+    @IBAction func maleOrFemaleAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            soundLabelData = "male"
+        case 1:
+            soundLabelData = "female"
+        default:
+            break
+        }
+        
+        print(soundLabelData)
     }
     
     func setupRecorder() {
@@ -95,7 +110,7 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         let apiUrl = URL(string: "https://example.com/upload")
         let session = URLSession.shared
 
-        // Prepare the URLRequest
+        // Create the URLRequest
         var request = URLRequest(url: apiUrl!)
         request.httpMethod = "POST"
 
