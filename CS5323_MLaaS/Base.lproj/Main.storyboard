@@ -75,14 +75,32 @@
                                     <action selector="recordSound:" destination="EeU-Us-Qbx" eventType="touchUpInside" id="gpY-1i-E9W"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cih-fs-POX">
+                                <rect key="frame" x="0.0" y="424" width="414" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fVm-5d-QMC">
+                                <rect key="frame" x="157" y="85" width="99" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Train"/>
+                                    <segment title="Test"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sceneSelector:" destination="EeU-Us-Qbx" eventType="valueChanged" id="qe5-7p-pWB"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hel-wQ-0xI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Module A" image="figure.archery" catalog="system" selectedImage="figure.archery" id="8Qt-9q-sxH"/>
                     <connections>
+                        <outlet property="genderPicker" destination="cih-fs-POX" id="SSV-gY-Cuw"/>
+                        <outlet property="playLabel" destination="g8o-4k-wxN" id="fRy-gp-yvV"/>
                         <outlet property="postButton" destination="JgJ-19-Rl5" id="XrQ-1Y-ber"/>
                         <outlet property="recordButton" destination="kDc-NL-rMO" id="gWj-Ja-BdJ"/>
+                        <outlet property="segmentControl" destination="fVm-5d-QMC" id="yBe-oo-gK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggd-ag-eeH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -118,10 +136,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

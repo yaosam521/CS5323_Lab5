@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SwiftUI
 
 class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
@@ -18,6 +19,16 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     var vc = ModuleAViewController()
     var cflag: Bool
     
+    enum Gender: String, CaseIterable, Identifiable{
+        case male, female
+        var id: Self { self }
+    }
+    @State private var selectedGender: Gender = .female
+    //func Picker("Gender", selection: $selectedGender){
+      //  ForEach(Gender.allCases) { gender in
+        //    Text(gender.rawValue.capitalized)
+        //}
+    //}
     
     override init(){
         self.cflag = false
