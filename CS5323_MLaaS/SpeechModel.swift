@@ -11,8 +11,23 @@ import UIKit
 import AVFoundation
 import SwiftUI
 
-class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, URLSessionDelegate {
     
+    lazy var session: URLSession = {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        
+        sessionConfig.timeoutIntervalForRequest = 5.0
+        sessionConfig.timeoutIntervalForResource = 8.0
+        sessionConfig.httpMaximumConnectionsPerHost = 1
+        
+        return URLSession(configuration: sessionConfig,
+            delegate: self,
+            delegateQueue:self.operationQueue)
+    }()
+    
+    let operationQueue = OperationQueue()
+    
+    var ringBuffer = RingBuffer()
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     var fileName = "audioFile.m4a"
@@ -34,11 +49,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         self.cflag = false
         super.init()
         setupRecorder()
-        
-       
-
-        
-        
+    
     }
     
     func setupRecorder() {
@@ -141,6 +152,45 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         }
         
         task.resume() //start task
+    }
+    func postSound2() {
+        // Get the file path to upload
+        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+        let baseURL = "\(SERVER_URL)/AddDataPoint"
+        let postUrl = URL(string: "\(baseURL)")
+        
+        // create a custom HTTP POST request
+        var request = URLRequest(url: postUrl!)
+        
+        // data to send in body of post request (send arguments as json)
+        let jsonUpload:NSDictionary = ["feature":array,
+                                       "label":"\(label)",
+                                       "dsid":self.dsid]
+        
+        
+        let requestBody:Data? = self.convertDictionaryToData(with:jsonUpload)
+        
+        request.httpMethod = "POST"
+        request.httpBody = requestBody
+        
+        let postTask : URLSessionDataTask = self.session.dataTask(with: request,
+            completionHandler:{(data, response, error) in
+                if(error != nil){
+                    if let res = response{
+                        print("Response:\n",res)
+                    }
+                }
+                else{
+                    let jsonDictionary = self.convertDataToDictionary(with: data)
+                    
+                    print(jsonDictionary["feature"]!)
+                    print(jsonDictionary["label"]!)
+                }
+
+        })
+        
+        postTask.resume() // start the task
     }
     /*
     // MARK: - Navigation

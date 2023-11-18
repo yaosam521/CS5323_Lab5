@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17551B7E2B0978E40029E301 /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17551B7D2B0978E40029E301 /* RingBuffer.swift */; };
 		1786FC122B07494C0005B9D5 /* SpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786FC112B07494B0005B9D5 /* SpeechModel.swift */; };
 		D1F173E52AFADF3E009F5357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F173E42AFADF3E009F5357 /* AppDelegate.swift */; };
 		D1F173E72AFADF3E009F5357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F173E62AFADF3E009F5357 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17551B7D2B0978E40029E301 /* RingBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RingBuffer.swift; path = "../../../Downloads/SwiftHTTPExample-CoreML/HTTPSwiftExample/RingBuffer.swift"; sourceTree = "<group>"; };
 		1786FC112B07494B0005B9D5 /* SpeechModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechModel.swift; sourceTree = "<group>"; };
 		D1F173E12AFADF3E009F5357 /* CS5323_MLaaS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS5323_MLaaS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F173E42AFADF3E009F5357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		D1F173E32AFADF3E009F5357 /* CS5323_MLaaS */ = {
 			isa = PBXGroup;
 			children = (
+				17551B7D2B0978E40029E301 /* RingBuffer.swift */,
 				1786FC112B07494B0005B9D5 /* SpeechModel.swift */,
 				D1F173E42AFADF3E009F5357 /* AppDelegate.swift */,
 				D1F173E62AFADF3E009F5357 /* SceneDelegate.swift */,
@@ -272,6 +275,7 @@
 				D1F174172AFAEE19009F5357 /* ModuleBViewController.swift in Sources */,
 				1786FC122B07494C0005B9D5 /* SpeechModel.swift in Sources */,
 				D1F173E52AFADF3E009F5357 /* AppDelegate.swift in Sources */,
+				17551B7E2B0978E40029E301 /* RingBuffer.swift in Sources */,
 				D1F173E72AFADF3E009F5357 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
