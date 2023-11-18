@@ -9,7 +9,7 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
-    var fileName = "audioFile.m4a"
+    var fileName = "audioFile.wav"
     var speechModel:SpeechModel? = nil
     
     override func viewDidLoad() {
@@ -27,21 +27,25 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         
         if(speechModel?.cflag==false){
             speechModel?.recordSound()
-            
+            // Update UI for recording state
             self.recordButton?.setTitle("stop", for: .normal)
         }
         else{
             speechModel?.recordSound()
+            // Update UI for non-recording state
             self.recordButton?.setTitle("Record", for: .normal)
         }
        
     }
     
     @IBAction func playSound(_ sender: Any) {
+        //Call play recording function
         self.speechModel?.playSound()
     }
     
     @IBAction func postSound(_ sender: Any) {
+        //Call play post function
+        speechModel?.postSound()
         
     }
     /*
