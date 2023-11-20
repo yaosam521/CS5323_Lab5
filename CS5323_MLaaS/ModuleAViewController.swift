@@ -104,8 +104,20 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
     @IBAction func postSound(_ sender: Any) {
         
         // Get the file path to upload
+        // Generate the new file name using soundLabelData
+        let newFileName = "\(soundLabelData)_\(fileName)"
+        
+        // Get the file path to upload
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let soundFilePath = documentPath.appendingPathComponent(fileName)
+        let newSoundFilePath = documentPath.appendingPathComponent(newFileName)
+
+        do {
+            // Rename the file
+            try FileManager.default.moveItem(at: soundFilePath, to: newSoundFilePath)
+        } catch {
+            print("Error renaming file: \(error)")
+        }
         
         let apiUrl = URL(string: "https://example.com/upload")
         let session = URLSession.shared
@@ -115,7 +127,7 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         request.httpMethod = "POST"
 
         // Create the upload task
-        let task = session.uploadTask(with: request, fromFile: soundFilePath) { (data, response, error) in
+        let task = session.uploadTask(with: request, fromFile: newSoundFilePath) { (data, response, error) in
             if let error = error {
                 print("Error uploading file: \(error)")
             } else {
