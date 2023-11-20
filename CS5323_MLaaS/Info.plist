@@ -17,8 +17,8 @@
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
 					<string>Main</string>
-                    <key>NSMicrophoneUsageDescription</key>
-                    <string>Access to the microphone for recording audio</string>
+					<key>NSMicrophoneUsageDescription</key>
+					<string>Access to the microphone for recording audio</string>
 				</dict>
 			</array>
 		</dict>

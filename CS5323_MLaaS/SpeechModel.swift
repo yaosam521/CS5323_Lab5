@@ -27,7 +27,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, UR
     
     let operationQueue = OperationQueue()
     
-    var ringBuffer = RingBuffer()
+    //var ringBuffer = RingBuffer()
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     var fileName = "audioFile.m4a"
@@ -48,12 +48,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, UR
     override init(){
         self.cflag = false
         super.init()
-        setupRecorder()
-        
-       
-
-        
-        
+        setupRecorder()  
     }
     
     func setupRecorder() {
@@ -157,6 +152,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, UR
         
         task.resume() //start task
     }
+    /*
     func postSound2() {
         // Get the file path to upload
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -195,7 +191,7 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, UR
         })
         
         postTask.resume() // start the task
-    }
+    }*/
     /*
     // MARK: - Navigation
 
