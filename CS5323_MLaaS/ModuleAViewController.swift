@@ -15,6 +15,9 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         return gender[row]
     }
     
+    //Label to predict gender
+    @IBOutlet weak var genderPredictLabel: UILabel!
+    
     let gender = ["Male", "Female"]
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var postButton: UIButton!
@@ -93,6 +96,11 @@ class ModuleAViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRec
         //Call play post function
         speechModel?.postSound()
         
+    }
+    
+    func getPrediction(){
+        //TODO - Get Prediction Here (PSEUDOCODE)
+        //self.genderPredictLabel.text = model.prediction()
     }
     /*
     // MARK: - Navigation

@@ -18,7 +18,7 @@
 					<key>UISceneStoryboardFile</key>
 					<string>Main</string>
 					<key>NSMicrophoneUsageDescription</key>
-					<string>Access to the microphone for recording audio</string>
+					<string>Using Microphone Request</string>
 				</dict>
 			</array>
 		</dict>

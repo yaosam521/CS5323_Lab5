@@ -25,11 +25,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TsY-Nd-VjA">
-                                <rect key="frame" x="158" y="49" width="99" height="32"/>
+                                <rect key="frame" x="144" y="49" width="127" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Train"/>
-                                    <segment title="Test"/>
+                                    <segment title="Predict"/>
                                 </segments>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="afA-8i-wnZ">
@@ -167,16 +167,30 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fVm-5d-QMC">
-                                <rect key="frame" x="157" y="85" width="99" height="32"/>
+                                <rect key="frame" x="143" y="85" width="127" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Train"/>
-                                    <segment title="Test"/>
+                                    <segment title="Predict"/>
                                 </segments>
                                 <connections>
                                     <action selector="sceneSelector:" destination="EeU-Us-Qbx" eventType="valueChanged" id="qe5-7p-pWB"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prediction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqS-QC-xKR">
+                                <rect key="frame" x="167" y="159" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26H-wl-Eeb">
+                                <rect key="frame" x="179" y="188" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hel-wQ-0xI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -184,6 +198,7 @@
                     <tabBarItem key="tabBarItem" title="Module A" image="figure.archery" catalog="system" selectedImage="figure.archery" id="8Qt-9q-sxH"/>
                     <connections>
                         <outlet property="genderPicker" destination="cih-fs-POX" id="SSV-gY-Cuw"/>
+                        <outlet property="genderPredictLabel" destination="26H-wl-Eeb" id="dr8-Ak-4hG"/>
                         <outlet property="playLabel" destination="g8o-4k-wxN" id="fRy-gp-yvV"/>
                         <outlet property="postButton" destination="JgJ-19-Rl5" id="XrQ-1Y-ber"/>
                         <outlet property="recordButton" destination="kDc-NL-rMO" id="gWj-Ja-BdJ"/>

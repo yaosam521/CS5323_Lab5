@@ -13,6 +13,9 @@ import SwiftUI
 
 class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, URLSessionDelegate {
     
+    //MARK: CHANGE THIS EVERY TIME
+    let BASE_URL = "http://10.9.155.194:8000"
+    
     lazy var session: URLSession = {
         let sessionConfig = URLSessionConfiguration.ephemeral
         
