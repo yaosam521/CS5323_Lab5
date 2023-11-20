@@ -12,7 +12,7 @@
         <!--Module B-->
         <scene sceneID="MeM-1h-WIC">
             <objects>
-                <viewController id="JdB-Ha-7ks" sceneMemberID="viewController">
+                <viewController id="JdB-Ha-7ks" customClass="ModuleBViewController" customModule="CS5323_MLaaS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n5t-gG-3dU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzR-aM-FO1">
                                         <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="34.333333333333336"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Record"/>
                                     </button>
@@ -93,6 +94,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Module B" image="figure.baseball" catalog="system" selectedImage="figure.baseball" id="RgU-8g-S9L"/>
+                    <connections>
+                        <outlet property="genderPicker" destination="8DG-g5-sEk" id="V5i-S9-4u9"/>
+                        <outlet property="modelPicker" destination="C4v-cs-bbW" id="OLZ-nB-U7P"/>
+                        <outlet property="playButton" destination="lS3-GC-0MO" id="urf-NM-hwb"/>
+                        <outlet property="postButton" destination="b46-lV-0fh" id="mZZ-KD-1t9"/>
+                        <outlet property="recordButton" destination="gzR-aM-FO1" id="enI-cI-ttc"/>
+                        <outlet property="trainTestSegment" destination="TsY-Nd-VjA" id="FEv-RX-vd2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hik-pm-gcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

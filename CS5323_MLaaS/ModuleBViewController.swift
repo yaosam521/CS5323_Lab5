@@ -6,9 +6,28 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ModuleBViewController: UIViewController {
+class ModuleBViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+    
+    //Create Speech Model
+    var speechModel: SpeechModel? = nil
+    var soundRecorder = AVAudioRecorder()
+    var soundPlayer = AVAudioPlayer()
 
+    //Segment
+    @IBOutlet weak var trainTestSegment: UISegmentedControl!
+    
+    //Buttons
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
+    
+    //Pickers
+    @IBOutlet weak var genderPicker: UIPickerView!
+    @IBOutlet weak var modelPicker: UIPickerView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
