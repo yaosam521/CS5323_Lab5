@@ -195,6 +195,18 @@ class SpeechModel : NSObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate, UR
         
         postTask.resume() // start the task
     }*/
+    
+    // Function to extract audio features from the recorded sound
+        func extractFeatures(from audioData: Data) -> AVAudioRecorder? {
+            // Implement feature extraction logic based on your model requirements
+            // This could involve using an audio processing library to extract features
+            // such as MFCCs, spectrogram, etc.
+            
+            return nil
+        }
+    
+   
+    
     /*
     // MARK: - Navigation
 
